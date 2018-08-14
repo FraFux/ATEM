@@ -1,0 +1,58 @@
+<div ng-show="displayMode==='question'">
+  <p class="storyText">{{currentQuestion.story}}</p>
+  <p ng-show="!showQuestionImg" class="storyText">{{currentQuestion.question}}</p>
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="text-center">
+        <img src={{currentQuestion.storyImg}} class="storyimg" ng-show="showQuestionImg" />
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="text-center">
+        <button class="btn-success" ng-click="showQuestionImg = false" ng-show="showQuestionImg">Weiter</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="container" ng-show="!showQuestionImg" id="answerImages">
+    <table class="answerImgTable">
+      <tr>
+        <td class="td"><img src={{currentQuestion.answers[0]}} class="img" id="option1" ng-click="selectAnswer(1)" ng-style="{'outline': selectedAnswer === 1 ? '5px solid green' : ''}"></td>
+        <td class="td"><img src={{currentQuestion.answers[1]}} class="img" id="option2" ng-click="selectAnswer(2)" ng-style="{'outline': selectedAnswer === 2 ? '5px solid green' : ''}"></td>
+      </tr>
+      <tr>
+        <td class="td"><img src={{currentQuestion.answers[2]}} class="img" id="option3" ng-click="selectAnswer(3)" ng-style="{'outline': selectedAnswer === 3 ? '5px solid green' : ''}"></td>
+        <td class="td"><img src={{currentQuestion.answers[3]}} class="img" id="option4" ng-click="selectAnswer(4)" ng-style="{'outline': selectedAnswer === 4 ? '5px solid green' : ''}"></td>
+      </tr>
+    </table>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="text-center">
+        <button class="btn-success" ng-show="!showQuestionImg && selectedAnswer>0" ng-click="confirmQuestion()">Weiter</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div ng-show="displayMode==='story'">
+  <p class="storyText">{{currentStory.text}}</p>
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="text-center">
+        <img src={{currentStory.image}} class="storyimg" />
+      </div>
+    </div>
+  </div>
+  <p></p>
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="text-center">
+        <button class="btn-success" ng-click="continueStory()">Weiter</button>
+      </div>
+    </div>
+  </div>
+</div>
